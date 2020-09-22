@@ -1,0 +1,18 @@
+instalar app_base colegio san jose
+
+paso 1: abrir consola
+paso 2: clonar proyecto en htdocs con el siguiente comando.  git clone https://github.com/marlonSamuel/colegio.git
+paso 3: posicionarse en capeta colegio e instalar dependencias con composer.  composer install
+paso 4: crear base de datos en maria_db con nombre dbcolegio
+paso 5: crear archivo .env y compiar el contenido de .evn.example
+paso 6: ejecutar migraciones con el siguiente comando.   php artisan migrate
+paso 7: ejecutar comando..   php artisan passport:install   //esto sirve para generar clientes de autenticacion
+paso 8: copiar los clientes generados en la base de datos y pegarlos en las variables
+	PERSONAL_CLIENT_ID=
+	PERSONAL_CLIENT_SECRET=
+	PASSWORD_CLIENT_ID= //el id del password client que es el segundo generado 2
+	PASSWORD_CLIENT_SECRET= //el client_id del password_client
+del archivo .evn 
+paso 10: ejecutar comando.. php artisan config:cache
+paso 11: entrar a carpeta app_colegio e instalar dependencias con..   yarn install (istalar previamente de manera global node, vue-cli y yarn)
+paso 12: crear host virtual

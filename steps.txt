@@ -1,0 +1,564 @@
+<template>
+  <v-layout align-start v-loading="loading">
+    <v-flex>
+         <v-layout row wrap justify-end>
+            <div>
+                <v-breadcrumbs :items="itemsB">
+                <template v-slot:divider>
+                    <v-icon>forward</v-icon>
+                </template>
+                </v-breadcrumbs>
+            </div>
+
+            </v-layout>
+        <v-stepper v-model="datos" vertical>
+            <v-stepper-step step="1" v-bind:complete="datos > 1">
+                Datos del alumno
+                <small>Ingresar información relacionada con los datos del nuevo alumno alumno</small>
+            </v-stepper-step>
+
+            <v-stepper-content step="1">
+                <v-form data-vv-scope="form_alumno" > 
+                    <v-container>
+                    <v-layout wrap>
+                        <v-flex xs12 md4
+                        >
+                        <v-text-field
+                            v-model="form.codigo"
+                            label="Codigo"
+                            v-validate="'required'"
+                            type="text"
+                            data-vv-name="codigo"
+                            :error-messages="errors.collect('form_alumno.codigo')"
+                            prepend-icon="code"
+                        ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.primer_nombre"
+                            label="Primer nombre"
+                            v-validate="'required'"
+                            type="text"
+                            data-vv-name="primer_nombre"
+                            :error-messages="errors.collect('form_alumno.primer_nombre')"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                            <v-text-field
+                                prepend-icon="add"
+                                v-model="form.segundo_nombre"
+                                label="Segundo nombre"
+                                type="text"
+                            ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.tercer_nombre"
+                            label="Tercer nombre"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.primer_apellido"
+                            label="Primer apellido"
+                            v-validate="'required'"
+                            type="text"
+                            data-vv-name="primer_apellido"
+                            :error-messages="errors.collect('form_alumno.primer_apellido')"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.segundo_apellido"
+                            label="Segundo apellido"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 sm6 md4>
+                            <v-menu
+                                v-model="menu2"
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                lazy
+                                transition="scale-transition"
+                                offset-y
+                                full-width
+                                min-width="290px"
+                            >
+                                <template v-slot:activator="{ on }">
+                                <v-text-field
+                                    clearable
+                                    readonly
+                                    v-model="form.fecha_nac"
+                                    label="Fecha de nacimiento"
+                                    prepend-icon="event"
+                                    v-on="on"
+                                    v-validate="'required'"
+                                    data-vv-name="fecha_nacimiento"
+                                    :error-messages="errors.collect('form_alumno.fecha_nacimiento')"
+                                ></v-text-field>
+                                </template>
+                                <v-date-picker 
+                                locale="es" v-model="form.fecha_nac" @input="menu2 = false"></v-date-picker>
+                            </v-menu>
+                            </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="person_add"
+                            v-model="form.genero"
+                            label="Genero"
+                            v-validate="'required'"
+                            type="text"
+                            data-vv-name="genero"
+                            :error-messages="errors.collect('form.genero')"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="contact_phone"
+                            v-model="form.telefono"
+                            label="Télefono"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="email"
+                            v-model="form.email"
+                            label="email"
+                            v-validate="'email'"
+                            data-vv-name="email"
+                            :error-messages="errors.collect('form_alumno.email')"
+                            type="email"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md8>
+                        <v-text-field
+                            prepend-icon="format_textdirection_l_to_r"
+                            v-model="form.direccion"
+                            label="Dirección"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs6>
+                            <v-textarea
+                            prepend-icon="highlight_off"
+                            v-model="form.enfermedades"
+                            label="Enfermedades(Especifique)"
+                            ></v-textarea>
+                        </v-flex>
+
+                        <v-flex xs6>
+                            <v-textarea
+                            prepend-icon="highlight_off"
+                            v-model="form.alergias"
+                            label="Alergias(Especifique)"
+                            ></v-textarea>
+                        </v-flex>
+
+                    </v-layout>
+                    </v-container>
+                </v-form>
+
+                <v-btn color="primary" @click.native="beforeCreate('form_alumno')">Siguiente</v-btn>
+
+            </v-stepper-content>
+
+            <v-stepper-step step="2" v-bind:complete="datos > 2">
+                Datos del representantes
+                <small>Ingresar información relacionada con los datos del representante </small>
+            </v-stepper-step>
+
+            <v-stepper-content step="2">
+                <v-form data-vv-scope="form_representante"> 
+                    <v-container>
+                    <v-layout wrap>
+                        <v-flex xs12 md4
+                        >
+                        <v-text-field
+                            v-model="form.cui"
+                            label="Cui"
+                            v-validate="'required'"
+                            type="text"
+                            placeholder="ingrese cui"
+                            data-vv-name="cui"
+                            :error-messages="errors.collect('form_representante.cui')"
+                            prepend-icon="code"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.primer_nombre_a"
+                            label="Primer nombre"
+                            v-validate="'required'"
+                            type="text"
+                            placeholder="ingrese primer nombre"
+                            data-vv-name="primer_nombre"
+                            :error-messages="errors.collect('form_representante.primer_nombre')"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                            <v-text-field
+                                prepend-icon="add"
+                                v-model="form.segundo_nombre_a"
+                                placeholder="ingrese segundo nombre"
+                                label="Segundo nombre"
+                                type="text"
+                            ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.primer_apellido_a"
+                            label="Primer apellido"
+                            v-validate="'required'"
+                            placeholder="ingrese primer apellido"
+                            type="text"
+                            data-vv-name="primer_apellido"
+                            :error-messages="errors.collect('form_representante.primer_apellido')"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.segundo_apellido_a"
+                            placeholder="ingrese segundo apellido"
+                            label="Segundo apellido"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 sm6 md4>
+                            <v-menu
+                                v-model="menu3"
+                                :close-on-content-click="false"
+                                :nudge-right="40"
+                                lazy
+                                transition="scale-transition"
+                                offset-y
+                                full-width
+                                min-width="290px"
+                            >
+                                <template v-slot:activator="{ on }">
+                                <v-text-field
+                                    clearable
+                                    v-model="form.fecha_nac_a"
+                                    label="Fecha de nacimiento"
+                                    placeholder="ingrese fecha de nacimiento"
+                                    prepend-icon="event"
+                                    v-on="on"
+                                    v-validate="'required'"
+                                    data-vv-name="fecha_nacimiento"
+                                    :error-messages="errors.collect('form_representante.fecha_nacimiento')"
+                                ></v-text-field>
+                                </template>
+                                <v-date-picker 
+                                locale="es" v-model="form.fecha_nac_a" @input="menu3 = false"></v-date-picker>
+                            </v-menu>
+                            </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="contact_phone"
+                            v-model="form.telefono_a"
+                            placeholder="ingrese telefono de contacto"
+                            label="Télefono"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="email"
+                            v-model="form.email_a"
+                            label="email"
+                            placeholder="ingrese direccion"
+                            v-validate="'email'"
+                            data-vv-name="email"
+                            :error-messages="errors.collect('form_representante.email')"
+                            type="email"
+                        ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md4>
+                        <v-text-field
+                            prepend-icon="add"
+                            v-model="form.ocupacion"
+                            label="Ocupación"
+                            placeholder="ingrese ocupacion"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 md12>
+                        <v-text-field
+                            prepend-icon="format_textdirection_l_to_r"
+                            v-model="form.direccion_a"
+                            placeholder="ingrese dirección"
+                            label="Dirección"
+                            type="text"
+                        ></v-text-field>
+                        </v-flex>
+
+                    </v-layout>
+                    </v-container>
+                </v-form>
+                <v-btn color="primary" flat @click.native="goBack">Anterior</v-btn>
+                <v-btn color="primary" @click.native="beforeCreate('form_representante')">Continue</v-btn>
+            </v-stepper-content>
+
+            <v-stepper-step step="3" v-bind:complete="datos > 3">
+                Completo 
+                <small>Visualizar y confirmar información ingresada</small>
+            </v-stepper-step>
+            <v-stepper-content step="3">
+                <template>
+                    <v-tabs
+                        v-model="active"
+                        color="#1976d2"
+                        dark
+                        slider-color="yellow"
+                        >
+                        <v-tab>
+                            Datos de alumno
+                        </v-tab>
+                        <v-tab>
+                            Datos de apoderado
+                        </v-tab>
+
+                        <v-tab-item>
+                            <v-card>
+                                <v-img
+                                src="https://cdn.vuetifyjs.com/images/lists/ali.png"
+                                height="300px"
+                                >
+                                <v-layout
+                                    column
+                                    fill-height
+                                >
+                                    <v-card-title>
+                                    <v-btn dark icon>
+                                        <v-icon>chevron_left</v-icon>
+                                    </v-btn>
+
+                                    <v-spacer></v-spacer>
+
+                                    <v-btn dark icon class="mr-3">
+                                        <v-icon>edit</v-icon>
+                                    </v-btn>
+
+                                    <v-btn dark icon>
+                                        <v-icon>more_vert</v-icon>
+                                    </v-btn>
+                                    </v-card-title>
+
+                                    <v-spacer></v-spacer>
+
+                                    <v-card-title class="white--text pl-5 pt-5">
+                                    <div class="display-1 pl-5 pt-5">Ali Conners</div>
+                                    </v-card-title>
+                                </v-layout>
+                                </v-img>
+
+                                <v-list two-line>
+                                    <v-list-tile>
+                                        <v-list-tile-action>
+                                        <v-icon color="indigo">phone</v-icon>
+                                        </v-list-tile-action>
+
+                                        <v-list-tile-content>
+                                        <v-list-tile-title>(650) 555-1234</v-list-tile-title>
+                                        <v-list-tile-sub-title>Mobile</v-list-tile-sub-title>
+                                        </v-list-tile-content>
+
+                                        <v-list-tile-action>
+                                        <v-icon>chat</v-icon>
+                                        </v-list-tile-action>
+                                    </v-list-tile>
+
+                                <v-list-tile>
+                                    <v-list-tile-action></v-list-tile-action>
+
+                                    <v-list-tile-content>
+                                    <v-list-tile-title>(323) 555-6789</v-list-tile-title>
+                                    <v-list-tile-sub-title>Work</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+
+                                    <v-list-tile-action>
+                                    <v-icon>chat</v-icon>
+                                    </v-list-tile-action>
+                                </v-list-tile>
+
+                                <v-divider inset></v-divider>
+                                </v-list>
+                            </v-card>
+                        </v-tab-item>
+                        <v-tab-item>
+                            <v-card flat>
+                            <v-card-text> apoderado</v-card-text>
+                            </v-card>
+                        </v-tab-item>
+                        </v-tabs>
+                </template>
+                <v-flex xs12>
+                    
+                    <v-btn color="primary" @click="create"> Guardar</v-btn>
+                </v-flex>
+            </v-stepper-content>
+        </v-stepper>
+    </v-flex>
+  </v-layout>
+</template>
+
+<script>
+export default {
+  name: "AlumnoCreate",
+  props: {
+      source: String
+    },
+  data() {
+     return {
+            active: null,
+            menu2: false,
+            menu3: false,
+            datos: 1,
+            loading: false,
+            code: "",
+            date: null,
+            time: null,
+            experience: null,
+            itemsB: [
+                {
+                    text: 'Alumnos',
+                    disabled: false,
+                    href: '#/alumno_index',
+                },
+                {
+                    text: 'Nuevo Alumno',
+                    disabled: true,
+                }
+            ],
+            form: {
+                codigo: '',
+                primer_nombre: '',
+                segundo_nombre: '',
+                tercer_nombre: '',
+                primer_apellido: '',
+                segundo_apellido: '',
+                fecha_nac: '',
+                genero: '',
+                telefono: '',
+                email: '',
+                direccion: '',
+                enfermedades: '',
+                alergias: '',
+                observaciones: '',
+                foto: '',
+                cui: '',
+                primer_nombre_a: '',
+                segundo_nombre_a: '',
+                primer_apellido_a: '',
+                segundo_apellido_a: '',
+                fecha_nac_a: '',
+                email_a: '',
+                direccion_a: '',
+                ocupacion: '',
+                tipo_apoderado: '',
+                telefono_a: ''
+            }
+        };
+  },
+
+  created() {
+    let self = this
+  },
+
+  methods: {
+    //funcion para guardar registro
+    create(){
+      let self = this
+      self.loading = true
+      let data = self.form
+      console.log(data)
+
+      self.$store.state.services.alumnoService
+        .create(data)
+        .then(r => {
+          self.loading = false
+          if(r.response){
+            this.$toastr.error(r.response.data.error, 'error')
+            return
+          }
+          this.$toastr.success('registro agregado con éxito', 'éxito')
+          self.$router.push('/alumno_index')
+          self.clearData()
+
+        })
+        .catch(r => {});
+    },
+
+    //limpiar data de formulario
+    clearData(){
+        let self = this
+
+        Object.keys(self.form).forEach(function(key,index) {
+          if(typeof self.form[key] === "string") 
+            self.form[key] = ''
+          else if (typeof self.form[key] === "boolean") 
+            self.form[key] = true
+          else if (typeof self.form[key] === "number") 
+            self.form[key] = null
+        });
+
+        self.$validator.reset()
+    },
+
+    //funcion, validar si se guarda o actualiza
+    beforeCreate(scope){
+      let self = this
+      self.datos++
+      return
+      this.$validator.validateAll(scope).then((result) => {
+          if (result) {
+             self.datos++
+           }
+      });
+    },
+    
+    goBack(){
+        let self = this
+        self.datos--
+    },
+
+    cancelar(){
+      let self = this
+    },
+  },
+
+  computed: {
+    setTitle(){
+      let self = this
+      return self.form.id !== null ? self.form.nombre : 'Nuevo Registro'
+    }
+  },
+};
+</script>
