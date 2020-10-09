@@ -22,7 +22,7 @@ const state = {
     client_id: 2,
     //base_url: 'http://www.colegio-fa.com/',
     base_url: 'http://207.154.253.69/colegio-fo/',
-    client_secret: 'xoldLq58Yw4dUKWa4L9N6aiGDIxG2NDStgS2b051'
+    client_secret: 'KYp7cNlNYM72dmwCHBPVboZTjdr1YjhPf3mGPH3W'
 }
 
 const mutations = {
