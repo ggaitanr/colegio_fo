@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TelefonoApoderado extends Model
 {
-    use SoftDeletes;
     protected $table = 'telefono_apoderados';
     
     protected $fillable = [

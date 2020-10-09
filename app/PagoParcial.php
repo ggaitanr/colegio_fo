@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PagoParcial extends Model
 {
-    use SoftDeletes;
 
     protected $table = 'pagos_parciales';
     protected $fillable= [

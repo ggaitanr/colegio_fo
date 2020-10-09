@@ -17,7 +17,6 @@ class CreateCuotasTable extends Migration
             $table->unsignedBigInteger('grado_nivel_educativo_id');
             $table->unsignedBigInteger('concepto_pago_id');
             $table->unsignedBigInteger('ciclo_id');
-            $table->softDeletes();
 
             $table->foreign('grado_nivel_educativo_id')->references('id')->on('grados_niveles_educativos');
             $table->foreign('concepto_pago_id')->references('id')->on('concepto_pagos');

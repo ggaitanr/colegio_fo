@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NivelEducativo extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'niveles_educativos';
 
     protected $fillable= [

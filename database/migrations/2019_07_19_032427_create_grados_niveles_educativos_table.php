@@ -22,7 +22,6 @@ class CreateGradosNivelesEducativosTable extends Migration
             $table->foreign('grado_id')->references('id')->on('grados');
             $table->foreign('nivel_educativo_id')->references('id')->on('niveles_educativos');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

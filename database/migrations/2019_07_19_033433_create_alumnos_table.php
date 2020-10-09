@@ -30,7 +30,6 @@ class CreateAlumnosTable extends Migration
             $table->string('alergias',1000)->nullable();
             $table->string('foto',50)->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

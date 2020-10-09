@@ -20,8 +20,9 @@ const state = {
     is_login: false,
     token_expired: null,
     client_id: 2,
-    base_url: 'http://www.colegio-fa.com/',
-    client_secret: 'nx01Zz6ouA6ZyFEvfqvu0f7iCDrxf5PtjKkgTF4b'
+    //base_url: 'http://www.colegio-fa.com/',
+    base_url: 'http://207.154.253.69/colegio-fo/',
+    client_secret: 'xoldLq58Yw4dUKWa4L9N6aiGDIxG2NDStgS2b051'
 }
 
 const mutations = {

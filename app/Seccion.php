@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Seccion extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'secciones';
 
     protected $fillable= [

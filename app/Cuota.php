@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cuota extends Model
 {
-    use SoftDeletes;
     protected $table = 'cuotas';
 
     protected $fillable=[

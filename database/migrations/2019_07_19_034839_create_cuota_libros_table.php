@@ -17,7 +17,6 @@ class CreateCuotaLibrosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cuota_id');
             $table->unsignedBigInteger('libro_id');
-            $table->softDeletes();
 
             $table->foreign('cuota_id')->references('id')->on('cuotas');
             $table->foreign('libro_id')->references('id')->on('libros');

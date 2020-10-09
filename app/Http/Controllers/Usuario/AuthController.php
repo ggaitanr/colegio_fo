@@ -30,6 +30,11 @@ class AuthController extends Controller
 
         $user = User::where('email',$request->email)->first();
 
+        if(is_null($user)){
+            return response()->json(['error' => 
+            'usuario no encontrado','code'=>401],401);
+        }
+
 
         if(!is_null($user)){
             $scopes = $this->getAllScopes($user);

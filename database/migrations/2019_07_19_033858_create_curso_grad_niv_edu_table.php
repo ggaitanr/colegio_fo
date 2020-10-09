@@ -17,7 +17,6 @@ class CreateCursoGradNivEduTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('curso_id');
             $table->unsignedBigInteger('grado_nivel_educativo_id');
-            $table->softDeletes();
 
             $table->foreign('curso_id')->references('id')->on('cursos');
             $table->foreign('grado_nivel_educativo_id')->references('id')->on('grados_niveles_educativos');

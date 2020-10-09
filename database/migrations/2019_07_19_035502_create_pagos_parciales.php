@@ -24,7 +24,6 @@ class CreatePagosParciales extends Migration
             
             $table->foreign('pago_id')->references('id')->on('pagos');
             $table->foreign('apoderado_id')->references('id')->on('apoderados');
-            $table->softDeletes();
 
 
             $table->timestamps();

@@ -22,7 +22,6 @@ class CreateInscripcionesTable extends Migration
             $table->unsignedBigInteger('ciclo_id');
             $table->char('jornada',1)->default('M');
             $table->datetime('fecha');
-            $table->softDeletes();
 
             $table->foreign('alumno_id')->references('id')->on('alumnos');
             $table->foreign('grado_nivel_educativo_id')->references('id')->on('grados_niveles_educativos');

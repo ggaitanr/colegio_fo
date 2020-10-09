@@ -26,7 +26,6 @@ class CreateEmpleadosTable extends Migration
             $table->string('email',25);
             $table->string('direccion')->nullable();
             $table->unsignedBigInteger('cargo_id');
-            $table->softDeletes();
 
             $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->timestamps();

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Grado extends Model
 {
-    use SoftDeletes;
 
     protected $table = 'grados';
 

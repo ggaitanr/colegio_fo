@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GradoNivelEducativo extends Model
 {
-    use SoftDeletes;
 
     protected $table = 'grados_niveles_educativos';
 

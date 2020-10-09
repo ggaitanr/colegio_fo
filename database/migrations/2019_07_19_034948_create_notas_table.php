@@ -19,7 +19,6 @@ class CreateNotasTable extends Migration
             $table->unsignedBigInteger('periodo_academico_id');
             $table->unsignedBigInteger('curso_id');
             $table->decimal('nota',4,2);
-            $table->softDeletes();
 
             $table->foreign('inscripcion_id')->references('id')->on('inscripciones');
             $table->foreign('periodo_academico_id')->references('id')->on('periodos_academicos');

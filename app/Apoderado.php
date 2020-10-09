@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Apoderado extends Model
 {
-	use SoftDeletes;
     protected $table = 'apoderados';
     
     protected $fillable = [

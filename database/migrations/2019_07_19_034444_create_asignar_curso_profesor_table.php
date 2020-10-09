@@ -17,7 +17,6 @@ class CreateAsignarcursoProfesorTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('empleado_id');
             $table->unsignedBigInteger('curso_grad_niv_edu_id');
-            $table->softDeletes();
 
             $table->foreign('curso_grad_niv_edu_id')->references('id')->on('curso_grad_niv_edu');
             $table->foreign('empleado_id')->references('id')->on('empleados');

@@ -17,8 +17,6 @@ class CreatePagoMeses extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('mes_id');
             $table->unsignedBigInteger('pago_id');
-            
-            $table->softDeletes();
 
             $table->foreign('mes_id')->references('id')->on('meses');
             $table->foreign('pago_id')->references('id')->on('pagos');

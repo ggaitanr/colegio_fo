@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PagoMes extends Model
 {
-    use SoftDeletes;
     protected $table = 'pago_meses';
 
     protected $fillable=[

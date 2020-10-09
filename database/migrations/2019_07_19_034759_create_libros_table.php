@@ -17,7 +17,6 @@ class CreateLibrosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre',50);
             $table->string('descripcion',500);
-            $table->softDeletes();
             
             $table->timestamps();
         });

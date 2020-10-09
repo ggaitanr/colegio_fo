@@ -17,7 +17,7 @@ class AlumnoController extends ApiController
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('scope:alumno')->only(['create','update','destroy']);
+        //$this->middleware('scope:alumno')->only(['create','update','destroy']);
     }
 
     public function index()
@@ -64,7 +64,7 @@ class AlumnoController extends ApiController
         $this->validate($request, $reglas);
 
         DB::beginTransaction();
-            $alumno_exists = Alumno::where('codigo',$request->codigo)->withTrashed()->first();     
+            $alumno_exists = Alumno::where('codigo',$request->codigo)->first();     
             
             if(!is_null($alumno_exists)) return $this->errorResponse('codigo de alumno ya fue asignado',422);
 
@@ -88,7 +88,7 @@ class AlumnoController extends ApiController
 
             if(is_null($representante_id)){
 
-                $representante_exits = Apoderado::where('cui',$request->cui)->withTrashed()->first();
+                $representante_exits = Apoderado::where('cui',$request->cui)->first();
                 if(!is_null($representante_exits)) return $this->errorResponse('cui de representante ya fue asignado, si el cui es de un representante existente, haga clic la opcion validar del formulario',422);
 
                 $representante = Apoderado::create([
@@ -180,6 +180,7 @@ class AlumnoController extends ApiController
                 $data = substr($request->foto, strpos($request->foto, ',') + 1);
                 $data = base64_decode($data);
                 $imagePath = $request->codigo.'_'.time().'.png';
+
                 Storage::disk('images')->put($imagePath, $data);
             }
             $alumno->foto = 'img/alumnos/'.$imagePath;

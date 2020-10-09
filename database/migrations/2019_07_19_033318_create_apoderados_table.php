@@ -29,7 +29,6 @@ class CreateApoderadosTable extends Migration
             $table->string('nacionalidad',25);
             $table->string('estado_civil',25);
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('municipio_id')->references('id')->on('municipios');
         });

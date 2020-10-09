@@ -19,7 +19,6 @@ class CreateCiclosTable extends Migration
             $table->boolean('actual')->default(1);
             $table->datetime('inicio');
             $table->datetime('fin');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

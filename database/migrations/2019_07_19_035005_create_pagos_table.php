@@ -32,7 +32,6 @@ class CreatePagosTable extends Migration
             $table->datetime('fecha');
 
             $table->integer('factura');
-            $table->softDeletes();
 
             $table->foreign('inscripcion_id')->references('id')->on('inscripciones');
             $table->foreign('cuota_id')->references('id')->on('cuotas');

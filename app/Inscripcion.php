@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Inscripcion extends Model
 {
-    use SoftDeletes;
 
     protected $table = 'inscripciones';
 

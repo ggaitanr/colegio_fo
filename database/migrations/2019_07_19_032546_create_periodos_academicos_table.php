@@ -20,7 +20,6 @@ class CreatePeriodosAcademicosTable extends Migration
 
             $table->foreign('tipo_periodo_id')->references('id')->on('tipo_periodos');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

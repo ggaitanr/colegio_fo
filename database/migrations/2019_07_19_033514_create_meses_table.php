@@ -16,7 +16,6 @@ class CreateMesesTable extends Migration
         Schema::create('meses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mes')->unique();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

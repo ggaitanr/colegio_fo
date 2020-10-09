@@ -64,6 +64,7 @@ class Handler extends ExceptionHandler
     // Del 400-499 se refieren a problemas del lado del cliente 
     public function handleException($request, Exception $exception)
     {
+        #dd($exception);
         //No autorizado para acceder
         if($exception->getCode() === 401){
             return $this->errorResponse("Usuario o contraseña incorrectos", 401);

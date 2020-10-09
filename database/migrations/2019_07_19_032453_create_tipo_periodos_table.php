@@ -16,7 +16,6 @@ class CreateTipoPeriodosTable extends Migration
         Schema::create('tipo_periodos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',25);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

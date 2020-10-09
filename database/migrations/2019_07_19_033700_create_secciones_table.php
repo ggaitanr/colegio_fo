@@ -16,7 +16,6 @@ class CreateSeccionesTable extends Migration
         Schema::create('secciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->char('seccion',2)->unique();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

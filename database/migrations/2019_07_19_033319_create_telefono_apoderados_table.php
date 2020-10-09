@@ -20,7 +20,6 @@ class CreateTelefonoApoderadosTable extends Migration
             $table->unsignedBigInteger('apoderado_id');
 
             $table->foreign('apoderado_id')->references('id')->on('apoderados');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

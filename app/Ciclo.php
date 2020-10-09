@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ciclo extends Model
 {
-    use SoftDeletes;
     protected $table = 'ciclos';
     protected $fillable = [
         'ciclo',

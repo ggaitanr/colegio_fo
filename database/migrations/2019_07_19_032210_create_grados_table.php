@@ -16,7 +16,6 @@ class CreateGradosTable extends Migration
         Schema::create('grados', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',25);
-            $table->softDeletes();
             $table->timestamps();
         });
     }
