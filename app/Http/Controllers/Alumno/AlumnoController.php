@@ -93,6 +93,7 @@ class AlumnoController extends ApiController
 
                 $representante = Apoderado::create([
                     'cui' => $request->cui,
+                    'nit'=> $reqeust->nit,
                     'primer_nombre' => $request->primer_nombre_a,
                     'segundo_nombre' => $request->segundo_nombre_a,
                     'primer_apellido' => $request->primer_apellido_a,

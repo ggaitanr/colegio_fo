@@ -214,6 +214,10 @@ export default {
             .destroy(data)
             .then(r => {
                 self.loading = false
+                if(r.response){
+                  this.$toastr.error(r.response.data.error, 'error')
+                  return
+                }
                 self.getAll()
                 this.$toastr.success('registro eliminado con exito', 'exito')
                 self.close()

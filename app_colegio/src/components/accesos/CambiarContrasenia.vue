@@ -108,7 +108,7 @@ export default {
       let self = this
       var counter = 5
       self.exit = true
-      self.exit_message = 'contraseña ah sido reiniciado correctamente, vuelve a iniciar sessión en '+counter
+      self.exit_message = 'contraseña ha sido reiniciado correctamente, vuelve a iniciar sesión en '+counter
       var close = setInterval(function()
         { 
             counter --

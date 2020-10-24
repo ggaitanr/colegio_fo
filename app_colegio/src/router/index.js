@@ -76,7 +76,7 @@ const routes = [
     { path: '/consulta_pago', name: 'ConsultaPago', component: ConsultaPago, beforeEnter: multiguard([isLoggedIn, permissionValidations]) },
     { path: '/consulta_ciclo', name: 'ConsultaCiclo', component: ConsultaCiclo, beforeEnter: multiguard([isLoggedIn, permissionValidations]) },
     { path: '/alumno_moroso', name: 'AlumnoMoroso', component: AlumnoMoroso, beforeEnter: multiguard([isLoggedIn, permissionValidations]) },
-    { path: '/change_password', name: 'CambiarContrasenia', component: CambiarContrasenia, beforeEnter: multiguard([isLoggedIn, permissionValidations]) },
+    { path: '/change_password', name: 'CambiarContrasenia', component: CambiarContrasenia, beforeEnter: multiguard([isLoggedIn]) },
     { path: '/historial_academico/:id', name: 'HistorialAcademico', component: HistorialAcademico, beforeEnter: multiguard([isLoggedIn, permissionValidations]) },
 ]
 

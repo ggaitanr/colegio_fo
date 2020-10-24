@@ -17,7 +17,7 @@ class UsuarioController extends ApiController
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('scope:usuario');
+        $this->middleware('scope:usuario')->except('changePassword');
     }
 
     public function index()

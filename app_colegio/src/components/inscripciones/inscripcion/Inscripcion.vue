@@ -367,7 +367,7 @@ export default {
             return
           }
           self.$alert(self.alumno.primer_nombre+' '+self.alumno.segundo_nombre+' '+self.alumno.primer_apellido+' '+self.alumno.segundo_apellido
-                        +" ah sido inscrito con exito al ciclo escolar "
+                        +" ha sido inscrito con exito al ciclo escolar "
                         +self.ciclo_actual.ciclo +' el codigo de inscripción y contrato generado es '+r.data.numero, 
             'éxito', {
             confirmButtonText: 'OK'

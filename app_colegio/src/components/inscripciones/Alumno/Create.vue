@@ -668,6 +668,7 @@ export default {
     mapApoderado(data){
         let self= this
         self.form.representante_id = data.id
+        self.form.nit = data.nit
         self.form.primer_nombre_a = data.primer_nombre
         self.form.segundo_nombre_a = data.segundo_nombre
         self.form.primer_apellido_a = data.primer_apellido
@@ -677,6 +678,9 @@ export default {
         self.form.direccion_a = data.direccion
         self.form.telefono_a= data.telefonos[0].telefono
         self.form.ocupacion = data.ocupacion
+        self.form.estado_civil = data.estado_civil
+        self.form.nacionalidad = data.nacionalidad
+        self.form.municipio_id = data.municipio_id
     },
 
     //limpiar data de formulario

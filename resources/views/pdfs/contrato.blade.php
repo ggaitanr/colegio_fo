@@ -79,7 +79,7 @@
     <header>
         <img class="logo" src="{{asset('img/logo.jpg')}}" width="100px" height="100px" />
         <b>CONTRATO DE ADHESION POR PRESTACION DE SERVICIOS EDUCATIVOS <br />
-            DEL COLEGIO PREUNIVERSITARIO {{strtoupper($institucion->nombre)}} </b>
+            DEL COLEGIO {{strtoupper($institucion->nombre)}} </b>
     </header>
 
     <!-- Wrap the content of your PDF inside a main tag -->
