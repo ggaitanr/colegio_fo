@@ -20,8 +20,8 @@ const state = {
     is_login: false,
     token_expired: null,
     client_id: 2,
-    base_url: 'http://www.colegio-fa.com/',
-    //base_url: 'http://207.154.253.69/colegio-fo/',
+    //base_url: 'http://www.colegio-fa.com/',
+    base_url: 'http://207.154.253.69/colegio-fo/',
     client_secret: 'KYp7cNlNYM72dmwCHBPVboZTjdr1YjhPf3mGPH3W'
 }
 
